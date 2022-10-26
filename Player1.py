@@ -16,3 +16,6 @@ class Player:
 
         if keys_pressed[ord("d")]:
             self.player.x += 2
+
+    def mouse(self, mouse_position):
+        self.player.x, self.player.y = mouse_position

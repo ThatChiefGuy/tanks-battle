@@ -29,7 +29,8 @@ def main():
                 run = False
 
         keys_pressed = pygame.key.get_pressed()
-
+        mouse_position = pygame.mouse.get_pos()
+        player_imports.mouse(mouse_position)
         player_imports.movement(keys_pressed)
         draw()
     pygame.quit()
