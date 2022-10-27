@@ -1,19 +1,46 @@
 
 class Computer:
-    def __init__(self, pygame, player):
-        self.player2 = pygame.Rect(500, 200, 30, 50)
-        self.pygame = pygame
+    def __init__(self, pygame, player, random):
+        self.computer = pygame.Rect(500, 200, 30, 50)
+        self.following = True
         self.player = player
+        self.chance = 1
+        self.pygame = pygame
+        self.random = random
 
     def following_motion(self):
-        if self.player.x > self.player2.x:
-            self.player2.x += 3
+        if self.following:
+            if self.player.x > self.computer.x:
+                self.computer.x += 3
 
-        if self.player.x < self.player2.x:
-            self.player2.x -= 3
+            if self.player.x < self.computer.x:
+                self.computer.x -= 3
 
-        if self.player.y > self.player2.y:
-            self.player2.y += 2
+            if self.player.y > self.computer.y:
+                self.computer.y += 2
 
-        if self.player.y < self.player2.y:
-            self.player2.y -= 2
+            if self.player.y < self.computer.y:
+                self.computer.y -= 2
+
+    def unfollowing_motion(self):
+        self.chance = self.random.randint(1, 100)
+
+        if self.chance == 5:
+            self.following = False
+
+        if not self.following:
+            if self.player.x > self.computer.x:
+                self.computer.x -= 3
+
+            if self.player.x < self.computer.x:
+                self.computer.x += 3
+
+            if self.player.y > self.computer.y:
+                self.computer.y -= 2
+
+            if self.player.y < self.computer.y:
+                self.computer.y += 2
+
+            self.chance = self.random.randint(1, 40)
+            if self.chance == 5:
+                self.following = True
