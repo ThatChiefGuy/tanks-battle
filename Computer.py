@@ -23,12 +23,14 @@ class Computer:
                 self.computer.y -= 2
 
     def unfollowing_motion(self):
+
         self.chance = self.random.randint(1, 100)
 
         if self.chance == 5:
             self.following = False
 
         if not self.following:
+
             if self.player.x > self.computer.x:
                 self.computer.x -= 3
 
@@ -36,11 +38,12 @@ class Computer:
                 self.computer.x += 3
 
             if self.player.y > self.computer.y:
-                self.computer.y -= 2
+                self.computer.y -= 3
 
             if self.player.y < self.computer.y:
-                self.computer.y += 2
+                self.computer.y += 3
 
-            self.chance = self.random.randint(1, 40)
-            if self.chance == 5:
+            self.chance = self.random.randint(1, 30)
+
+            if self.chance == 6:
                 self.following = True
